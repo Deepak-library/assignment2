@@ -1,0 +1,42 @@
+.guitar{
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+    width: 100%;
+    /* margin-top: 70px; */
+}
+
+#drumexercises{
+    height: 35px;
+    width: 170px;
+}
+
+.submit{
+    width: 100px;
+    height: 35px;
+    
+}
+.tempo-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+    /* display: none; */
+    
+}
+.sep{
+    margin-top: 100px;
+}
+/* .current-tempo{
+   
+    
+} */
+.goal-tempo{
+    margin-top: 10px;
+    
+}
+.save{
+    margin:20px;
+    width: 100px;
+    height: 30px;
+    
+}

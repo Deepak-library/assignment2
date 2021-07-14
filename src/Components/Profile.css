@@ -1,0 +1,17 @@
+.choice{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+}
+
+.guitar{
+    width: 200px;
+    height: 200px;
+    
+}
+
+.drum{
+    width: 200px;
+    height: 200px;
+}
