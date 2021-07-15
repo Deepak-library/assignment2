@@ -6,10 +6,11 @@ import Guitar from './Components/Guitar';
 import Drum from './Components/Drum';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 function App() {
+
   return (
     <Router>
     <div className="App">
-      <h1>Practice Pal</h1>
+      <h1 className="gotoprofile" onClick={()=>{window.location.href="/profile"}}>Practice Pal</h1>
       <Switch>
         <Route exact path="/">
         <Home></Home>

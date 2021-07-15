@@ -16,6 +16,27 @@ function Guitar() {
         setShowing(1);
     }
 
+
+    let current="",goal="";
+    function save(){
+        current=current.trim();
+        goal=goal.trim();
+        if(current.length===0 || goal.length===0){
+            alert("Fields can not be empty!!!")
+        }else{
+            if(isNaN(current)||isNaN(goal))
+            {
+                alert("Value should be number !!!")
+            }
+        }
+        console.log("save");
+    }
+    let uname=sessionStorage.getItem('uname');
+    if(uname===""){
+       // alert("You have not Loged In !!! Please Log In");
+        window.location.href='/';
+    }
+        else
     return (
         <div className="guitar">
             <h1>My Guitar Exercises</h1>
@@ -37,16 +58,16 @@ function Guitar() {
                     <label>
                         <b>Current Tempo -</b>
                     </label>
-                    <input type="text"></input>
+                    <input type="text" onChange={(e)=>{current=e.target.value}}></input>
                 </div>
                 <div className="goal-tempo">
                     <label>
                         <b>Goal Tempo -</b>
                     </label>
-                    <input type="text"></input>
+                    <input type="text" onChange={(e)=>{goal=e.target.value}}></input>
                 </div>
                 <div>
-                    <button className="save">Save</button>
+                    <button className="save" onClick={()=>save()}>Save</button>
                 </div>
             </div>
 

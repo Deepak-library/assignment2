@@ -3,15 +3,19 @@
     flex-direction: row;
     width: 100%;
     justify-content: center;
+    
 }
 
 .guitar{
-    width: 200px;
-    height: 200px;
-    
+    width: 100px;
+    height: 100px;
+    margin-right: 20px;
+    margin-left: 40px;
 }
 
 .drum{
     width: 200px;
-    height: 200px;
+    height: 100px;
+    margin-left: 20px;
+    margin-right: 40px;
 }
