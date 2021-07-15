@@ -17,6 +17,16 @@ function Drum() {
     }
 
     let current="",goal="";
+
+    async function addexercise(){
+        try{
+         await fetch("http://localhost:5000/todos",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({"uname":uname,"instrument":"Drum","exercise":exercise,"current":current,"goal":goal}) }).then(a=>a.json()).then(console.log);
+        
+        }catch(e){
+         alert("unable to connect server!")
+        }
+      }
+
     function save(){
         current=current.trim();
         goal=goal.trim();
@@ -26,6 +36,8 @@ function Drum() {
             if(isNaN(current)||isNaN(goal))
             {
                 alert("Value should be number !!!")
+            }else{
+                addexercise();
             }
         }
         console.log("save");

@@ -1,0 +1,7 @@
+fetch("http://localhost:5000/todos/user_add",{method:"POST",header:{"content-type":"application/json"},body:JSON.stringify({uname:"deepak singh",password:"asdfghjk"})}).then(a=>a.json()).then(console.log)
+
+fetch("http://localhost:5000/todos/user_add",{method:"POST",header:{"content-type":"application/json"},body:JSON.stringify({todo:"asdfghjk"})}).then(a=>a.json()).then(console.log)
+
+fetch("http://localhost:5000/todos",{method:"GET"}).then(a=>a.json()).then(console.log)
+
+fetch("http://localhost:5000/todos",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({todo:"ads"}) }).then(a=>a.json()).then(console.log)
