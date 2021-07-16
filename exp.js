@@ -14,14 +14,14 @@ const dbReadPool = new Pool({
     "port":5432
 })
 
-// //dbdelete role with SELECT, DELETE
-// const dbDeletePool = new Pool({
-//     user:"postgres",
-//     password:"qwerty",
-//     database:"music",
-//     host:"localhost",
-//     port:5432
-// })
+//dbdelete role with SELECT, DELETE
+const dbDeletePool = new Pool({
+    user:"postgres",
+    password:"qwerty",
+    database:"music",
+    host:"localhost",
+    port:5432
+})
 
 //dbcreate role with INSERT
 
@@ -145,7 +145,16 @@ app.delete("/todos", async (req, res) => {
     }
    
 })
+async function deleteTodo(id){
 
+    try {
+        await dbDeletePool.query("delete from list where id = $1", [id]);
+        return true
+        }
+        catch(e){
+            return false;
+        }
+}
 
 app.listen(5000, () => console.log("Web server is listening.. on port 5000"))
 
@@ -181,13 +190,38 @@ async function connect() {
 
 
 
-async function deleteTodo(id){
 
+
+app.get("/todos/list", async (req, res) => {
+    const rows = await readTodos();
+    res.setHeader("content-type", "application/json")
+    res.send(JSON.stringify(rows))
+})
+async function readTodos() {
     try {
-        await dbDeletePool.query("delete from todos where id = $1", [id]);
-        return true
-        }
-        catch(e){
-            return false;
-        }
+        console.log("hi");
+    const results = await dbReadPool.query("select * from list");
+    console.log(results.rows);
+    return results.rows;
+    }
+    catch(e){
+        console.log("not getting...")
+    }
+}
+
+app.put("/todos/list", async (req, res) => {
+    const rows = await readlist(req.body);
+    res.setHeader("content-type", "application/json")
+    res.send(JSON.stringify(rows))
+})
+async function readlist(user) {
+    try {
+        console.log("hi");
+    const results = await dbReadPool.query("select * from list where uname=$1",[user.uname]);
+    console.log(results.rows);
+    return results.rows;
+    }
+    catch(e){
+        console.log("not getting...")
+    }
 }
