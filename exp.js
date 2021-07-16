@@ -225,3 +225,33 @@ async function readlist(user) {
         console.log("not getting...")
     }
 }
+
+app.put("/todos", async (req, res) => {
+    let result = {}
+    try{
+        console.log(req.body);
+        const reqJson = req.body;
+        result.success = await updatelist(reqJson)
+    }
+    catch(e){
+        result.success=false;
+    }
+    finally{
+        res.setHeader("content-type", "application/json")
+        res.send(JSON.stringify(result))
+    }
+   
+})
+
+async function updatelist(todoText){
+console.log(todoText);
+    try {
+        await dbCreatePool.query("update list set current=$1,goal=$2 where id=$3",[todoText.current,todoText.goal,todoText.id]);
+        console.log("done query");
+        return true
+        }
+        catch(e){
+            console.log("failed to query");
+            return false;
+        }
+}

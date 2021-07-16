@@ -21,7 +21,7 @@ function Drum() {
     async function addexercise(){
         try{
          await fetch("http://localhost:5000/todos",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({"uname":uname,"instrument":"Drum","exercise":exercise,"current":current,"goal":goal}) }).then(a=>a.json()).then(console.log);
-        
+        alert("your exercise is saved !!!")
         }catch(e){
          alert("unable to connect server!")
         }

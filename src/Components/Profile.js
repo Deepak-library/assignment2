@@ -25,25 +25,26 @@ function Profile(){
       
           setlist(newList);
       }
-    //   function cards(){
-    //       alllist.forEach((listitem)=>{
-    //           return(
-    //               <div>
-    //                   {listitem.uname}{listitem.instrument}
-    //               </div>
-    //           );
-    //       });
-    //   }
-      let u=1;
-      var x=[];
-     // console.log(Object.prototype.toString.call(x) == '[object Array]');
-    //   useEffect(() => {
-    //     x.forEach(e=>{console.log(e);
-    //     });
-    //   },[alllist]);
 
-    if(uname===""){
-       // alert("You have not Loged In !!! Please Log In");
+      function update(idc,a,b){
+          console.log("inupdate");
+        const newList = excer;
+        
+        newList.forEach((iteam) => {
+            if(iteam.id === idc){
+                iteam.current=a;
+                iteam.goal=b;
+            }
+          });
+      
+          setlist([]);
+          setlist(newList);
+          
+      }
+   
+      var x=[];
+     if(uname===""){
+       
         window.location.href='/';
     }
         else
@@ -55,16 +56,8 @@ function Profile(){
             <button className="guitar" onClick={()=>{window.location.href='/guitar';}}><b>Guitar</b></button>
             <button className="drum" onClick={()=>{window.location.href='/drum';}}><b>Drum</b></button>
             </div>
-            {/* {cards()} */}
-            {/* <di>{(()=>{excer.forEach(listitem=>{
-              return(
-                  <div>
-                      {listitem.uname}{listitem.instrument}
-                  </div>
-              );
-          })})()}</di> */}
-          
-            <button onClick={()=>addexercise()}>load...</button>
+                    
+            <button onClick={()=>addexercise()}>load exercise</button>
             <button onClick={()=>{
                 for(var ih of l){x.push({'key':ih.id,...ih});};
                x.forEach(e=>{console.log(e);})
@@ -72,7 +65,7 @@ function Profile(){
                console.log(excer);
                 }}>see exercise</button>
 
-          <Goal list={excer} del={del}></Goal>
+          <Goal list={excer} del={del} modify={update}></Goal>
         </div>
 
     );
